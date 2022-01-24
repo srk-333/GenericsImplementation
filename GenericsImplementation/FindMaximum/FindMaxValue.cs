@@ -8,50 +8,34 @@ namespace GenericsImplementation.FindMaximum
 {
     public class FindMaxValue<T> where T : IComparable
     {
-        /* Using Generic Class, Method and Constructor to get Max value
-         * extending IComparable so that that we can use CompareTo method
+        /* UC- 4 Implemented
+         * taking more then 3 parameters as in Array
+         * Sorting Array to get max Value
          */
         //Instance Variables
-        public T first, second, third;
-
-        //Constructor to initialize data
-        public FindMaxValue(T first, T second,T third)
+        public T[] value;
+        //Constructor
+        public FindMaxValue ( T[] value)
         {
-            this.first = first;
-            this.second = second;   
-            this.third = third;            
+            this.value = value;
         }
-        //Generic Method
-        public static T FindMax(T fisrt, T second, T third)
+        //Generic Method to sort Array in asscending order
+        public T[] Sort( T[] values )
         {
-            //check condition for max number using CompareTo method.
-            if (fisrt.CompareTo(second) > 0 && fisrt.CompareTo(third) > 0)
-            {
-                Console.WriteLine("Max number is First Number: " + fisrt);
-                return fisrt;
-            }
-
-            if (second.CompareTo(fisrt) > 0 && second.CompareTo(third) > 0)
-            {
-                Console.WriteLine("Max number is Second Number: " + second);
-                return second;
-            }
-
-            if (third.CompareTo(fisrt) > 0 && third.CompareTo(second) > 0)
-            {
-                Console.WriteLine("Max number is Third Number: " + third);
-                return third;
-            }
-            else
-            {
-                Console.WriteLine("two or more numbers are same");
-                return default;
-            }
+            Array.Sort( values );
+            return values;
         }
-        //Display Method to Display data.
-        public void Display()
+        //Method to get Max value After Sorting.
+        public T MaxValue( params T[] values)
         {
-            Console.WriteLine("Max Value is: " + FindMax(first, second, third)); 
+            var sortedValues = Sort( values );
+            var s = sortedValues.Length - 1;
+            return sortedValues[s];
+        }
+        // Method to display Max Value
+        public void PrintMaxValue()
+        {
+            Console.WriteLine("Max Value is: " +MaxValue(this.value));
         }
     }
 }

@@ -11,17 +11,20 @@ namespace GenericsImplementation
     {
         static void Main(string[] args)
         {
-            //Instanse variables.
-            int first = 20, second = 300, third = 40;
-            double f = 40.5, s = 60.6, t = 35.79;
-            string firstName = "saurav", secondName = "gourav", thirdName = "Ankit";
+            //Array
+            int[] intArr = { 20, 80, 10, 50 };
+            double[] doubleArr = { 40.5, 60.6, 35.79, 78.8 };
+            string[] stringArr = {"saurav", "gourav", "Ankit" };
 
-            /* Creating object of FindMaxValue Class passing argument for the Constructor       
-             * and calling Display method
+            /* Creating object of FindMaxValue Class passing array to the Constructor       
+             * Calling PrintMaxValue Method to get Max value.
              */
-            new FindMaxValue<int>( first, second, third).Display();
-            new FindMaxValue<double>(f, s, t).Display();
-            new FindMaxValue<string>(firstName, secondName, thirdName).Display();
+            FindMaxValue<int> findMaxValue = new FindMaxValue<int>(intArr);
+            findMaxValue.PrintMaxValue();
+            FindMaxValue<double> findMaxValue2 = new FindMaxValue<double>(doubleArr);
+            findMaxValue2.PrintMaxValue();
+            FindMaxValue<string> findMaxValue3 = new FindMaxValue<string>(stringArr);
+            findMaxValue3.PrintMaxValue();
             Console.ReadLine();
         }
     }
